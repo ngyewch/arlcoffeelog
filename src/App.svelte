@@ -37,7 +37,9 @@
         return `${baseUrl}?${urlSearchParams.toString()}`;
     }
 
-    function onUserChanged(e: InputEvent) {
+    function onUserChanged(e: Event & {
+        currentTarget: EventTarget & HTMLSelectElement;
+    }) {
         if (selectedUser === undefined) {
             coffeeCount = undefined;
             return;
