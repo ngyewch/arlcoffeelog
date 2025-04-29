@@ -7,6 +7,19 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@picocss/pico':
+        specifier: 2.1.1
+        version: 2.1.1
+      ky:
+        specifier: 1.8.1
+        version: 1.8.1
+      svelte:
+        specifier: 5.28.2
+        version: 5.28.2
+      sweetalert2:
+        specifier: 11.19.1
+        version: 11.19.1
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
         specifier: 5.0.3
@@ -14,9 +27,6 @@ importers:
       '@tsconfig/svelte':
         specifier: 5.0.4
         version: 5.0.4
-      svelte:
-        specifier: 5.28.2
-        version: 5.28.2
       svelte-check:
         specifier: 4.1.6
         version: 4.1.6(picomatch@4.0.2)(svelte@5.28.2)(typescript@5.7.3)
@@ -200,6 +210,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@picocss/pico@2.1.1':
+    resolution: {integrity: sha512-kIDugA7Ps4U+2BHxiNHmvgPIQDWPDU4IeU6TNRdvXQM1uZX+FibqDQT2xUOnnO2yq/LUHcwnGlu1hvf4KfXnMg==}
 
   '@rollup/rollup-android-arm-eabi@4.40.1':
     resolution: {integrity: sha512-kxz0YeeCrRUHz3zyqvd7n+TVRlNyTifBsmnmNPtk3hQURUyG9eAB+usz6DAwagMusjx/zb3AjvDUvhFGDAexGw==}
@@ -392,6 +405,10 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
+  ky@1.8.1:
+    resolution: {integrity: sha512-7Bp3TpsE+L+TARSnnDpk3xg8Idi8RwSLdj6CMbNWoOARIrGrbuLGusV0dYwbZOm4bB3jHNxSw8Wk/ByDqJEnDw==}
+    engines: {node: '>=18'}
+
   locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
 
@@ -449,6 +466,9 @@ packages:
   svelte@5.28.2:
     resolution: {integrity: sha512-FbWBxgWOpQfhKvoGJv/TFwzqb4EhJbwCD17dB0tEpQiw1XyUEKZJtgm4nA4xq3LLsMo7hu5UY/BOFmroAxKTMg==}
     engines: {node: '>=18'}
+
+  sweetalert2@11.19.1:
+    resolution: {integrity: sha512-+8yws3Sc1srAZbrgdhmEIZny1I1UOYhJOIOdtOlv4TYaP5kkwQ9Zm8/BT23Qg+KdByCNOazltxEJAHzXVu8mhA==}
 
   tinyglobby@0.2.13:
     resolution: {integrity: sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw==}
@@ -609,6 +629,8 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@picocss/pico@2.1.1': {}
+
   '@rollup/rollup-android-arm-eabi@4.40.1':
     optional: true
 
@@ -764,6 +786,8 @@ snapshots:
 
   kleur@4.1.5: {}
 
+  ky@1.8.1: {}
+
   locate-character@3.0.0: {}
 
   magic-string@0.30.17:
@@ -848,6 +872,8 @@ snapshots:
       locate-character: 3.0.0
       magic-string: 0.30.17
       zimmerframe: 1.1.2
+
+  sweetalert2@11.19.1: {}
 
   tinyglobby@0.2.13:
     dependencies:
