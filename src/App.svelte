@@ -122,6 +122,13 @@
     function onSwitchUser() {
         selectedUser = '';
     }
+
+    function onShowPaymentInfo() {
+        Swal.fire({
+            title: 'Payment info',
+            text: 'PayLah!/PayNow to 81982143. Please inform Kee of your payment.',
+        });
+    }
 </script>
 
 <main>
@@ -160,9 +167,13 @@
             <footer>
                 <button onclick={onAddCup}>Add a cup ☕</button>
                 <button class="secondary" onclick={onReset} disabled={coffeeCount === undefined}>Reset 🗑️</button>
-                <button class="secondary" onclick={onSwitchUser}>Switch user 👤</button>
             </footer>
         </article>
+
+        <div>
+            <button class="outline" onclick={onSwitchUser}>Switch user 👤</button>
+            <button class="outline" onclick={onShowPaymentInfo}>Payment info 💸</button>
+        </div>
     {/if}
 </main>
 
@@ -172,7 +183,7 @@
     }
 
     .userInfo {
-        padding-top: 1em;
-        padding-bottom: 1em;
+        padding-top: 2em;
+        padding-bottom: 2em;
     }
 </style>
