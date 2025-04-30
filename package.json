@@ -22,6 +22,7 @@
     "vite": "6.3.3"
   },
   "dependencies": {
+    "@jill64/svelte-storage": "2.0.1",
     "@picocss/pico": "2.1.1",
     "date-fns": "4.1.0",
     "ky": "1.8.1",

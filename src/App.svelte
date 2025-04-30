@@ -1,10 +1,16 @@
 <script lang="ts">
     import Swal from 'sweetalert2';
+    import {storage} from '@jill64/svelte-storage';
+    import {string as serdeString} from '@jill64/svelte-storage/serde';
     import {getUsers, getTotalCoffee, logCoffee, type User} from './lib/service.js';
 
     const unitPrice = 0.60;
 
-    let selectedUser = $state<string>('');
+    const customStorage = storage({
+        ['selectedUser']: serdeString,
+    });
+
+    let selectedUser = $state<string>(customStorage['selectedUser']);
     let coffeeCount = $state<number>();
     let users = $state<User[]>([]);
     let loadingUserInfo = $state<boolean>(false);
@@ -12,9 +18,11 @@
     $effect(() => {
         coffeeCount = undefined;
         if ((selectedUser === undefined) || (selectedUser === '')) {
+            customStorage['selectedUser'] = '';
             retrieveUserList();
             return;
         } else {
+            customStorage['selectedUser'] = selectedUser;
             retrieveUserInfo();
         }
     });
