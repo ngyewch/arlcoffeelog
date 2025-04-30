@@ -50,7 +50,7 @@
 </script>
 
 <main>
-    <span style="font-size: 10em;">&#9749</span>
+    <span class="hero-icon">&#9749</span>
     <h1>ARL Productivity Logger</h1>
 
     {#if users.length > 0}
@@ -70,4 +70,7 @@
 </main>
 
 <style>
+    .hero-icon {
+        font-size: 10em;
+    }
 </style>
