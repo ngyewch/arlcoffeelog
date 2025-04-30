@@ -154,17 +154,18 @@
             <header>
                 <span>👤 {selectedUser}</span>
             </header>
-            <p class="userInfo">
+            <div class="userInfo">
                 {#if loadingUserInfo}
                     Loading...
                     <progress></progress>
                 {/if}
                 {#if !loadingUserInfo}
                     {#if (coffeeCount !== undefined)}
-                        ☕ x {coffeeCount} @ ${unitPrice.toFixed(2)} = ${(coffeeCount * unitPrice).toFixed(2)}
+                        <p>☕ x {coffeeCount}</p>
+                        <p>Total: ${(coffeeCount * unitPrice).toFixed(2)}</p>
                     {/if}
                 {/if}
-            </p>
+            </div>
             <footer>
                 <button onclick={onAddCup}>Add a cup ☕</button>
                 <button class="secondary" onclick={onReset} disabled={coffeeCount === undefined}>Reset 🗑️</button>
