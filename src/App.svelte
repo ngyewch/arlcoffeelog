@@ -1,19 +1,25 @@
 <script lang="ts">
     import Swal from 'sweetalert2';
-    import {onMount} from 'svelte';
-    import {getUsers, getTotalCoffee} from './lib/service.js';
+    import {getUsers, getTotalCoffee, type User} from './lib/service.js';
 
     const unitPrice = 0.60;
 
-    interface User {
-        username: string;
-    }
-
-    let users = $state<User[]>([]);
-    let selectedUser = $state<string>();
+    let selectedUser = $state<string>('');
     let coffeeCount = $state<number>();
+    let users = $state<User[]>([]);
 
-    onMount(() => {
+    $effect(() => {
+        console.log('selectedUser', selectedUser);
+        coffeeCount = undefined;
+        if ((selectedUser === undefined) || (selectedUser === '')) {
+            retrieveUserList();
+            return;
+        } else {
+            retrieveUserInfo();
+        }
+    });
+
+    function retrieveUserList() {
         const title = 'Retrieving user list...';
         Swal.fire({
             title: title,
@@ -37,16 +43,13 @@
                     });
             },
         });
-    });
+    }
 
-    function onUserChanged(e: Event & {
-        currentTarget: EventTarget & HTMLSelectElement;
-    }) {
-        const title = 'Retrieving user info...';
-        if (selectedUser === undefined) {
-            coffeeCount = undefined;
+    function retrieveUserInfo() {
+        if ((selectedUser === undefined) || (selectedUser === '')) {
             return;
         }
+        const title = 'Retrieving user info...';
         Swal.fire({
             title: title,
             didOpen: () => {
@@ -68,25 +71,43 @@
             },
         });
     }
+
+    function onSwitchUser() {
+        selectedUser = '';
+    }
 </script>
 
 <main>
-    <span class="hero-icon">&#9749</span>
+    <span class="hero-icon">☕</span>
     <h1>ARL Productivity Logger</h1>
 
-    {#if users.length > 0}
-        <select bind:value={selectedUser} onchange={onUserChanged}>
-            <option selected disabled value="">
-                Select user...
-            </option>
-            {#each users as user}
-                <option>{user.username}</option>
-            {/each}
-        </select>
+    {#if (selectedUser === '')}
+        {#if users.length > 0}
+            <select bind:value={selectedUser}>
+                <option selected disabled value="">
+                    Select user...
+                </option>
+                {#each users as user}
+                    <option>{user.username}</option>
+                {/each}
+            </select>
+        {/if}
     {/if}
 
-    {#if (selectedUser !== undefined) && (coffeeCount !== undefined)}
-        &#9749 x {coffeeCount} @ ${unitPrice.toFixed(2)} = ${(coffeeCount * unitPrice).toFixed(2)}
+    {#if (selectedUser !== '')}
+        <article>
+            <header>👤 {selectedUser}</header>
+            <p>
+                {#if (coffeeCount !== undefined)}
+                    ☕ x {coffeeCount} @ ${unitPrice.toFixed(2)} = ${(coffeeCount * unitPrice).toFixed(2)}
+                {/if}
+            </p>
+            <footer>
+                <button>Add a cup ☕</button>
+                <button class="secondary">Reset 🗑️</button>
+                <button class="secondary" onclick={onSwitchUser}>Switch user 👤</button>
+            </footer>
+        </article>
     {/if}
 </main>
 
