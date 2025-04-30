@@ -1,6 +1,6 @@
 <script lang="ts">
     import Swal from 'sweetalert2';
-    import {getUsers, getTotalCoffee, type User} from './lib/service.js';
+    import {getUsers, getTotalCoffee, logCoffee, type User} from './lib/service.js';
 
     const unitPrice = 0.60;
 
@@ -72,6 +72,50 @@
         });
     }
 
+    function onAddCup() {
+        if ((selectedUser === undefined) || (selectedUser === '')) {
+            return;
+        }
+        const title = 'Add a cup';
+        Swal.fire({
+            title: title,
+            didOpen: () => {
+                Swal.showLoading();
+                logCoffee(selectedUser ? selectedUser : '', new Date(), 1)
+                    .then(() => {
+                        Swal.close();
+                        retrieveUserInfo();
+                    })
+                    .catch(e => {
+                        console.log(e);
+                        Swal.close();
+                        Swal.fire({
+                            title: title,
+                            icon: 'error',
+                            text: e,
+                        });
+                    });
+            },
+        });
+    }
+
+    function onReset() {
+        const title = 'Reset';
+        const amountOwed = (coffeeCount !== undefined) ? (coffeeCount * unitPrice).toFixed(2) : 'amount owed';
+        Swal.fire({
+            icon: 'warning',
+            title: title,
+            text: `Please confirm you have paid ${amountOwed} to Kee before resetting.`,
+            confirmButtonText: 'Confirm reset',
+            showCancelButton: true,
+        })
+            .then(result => {
+                if (result.isConfirmed) {
+                    // TODO
+                }
+            });
+    }
+
     function onSwitchUser() {
         selectedUser = '';
     }
@@ -103,8 +147,8 @@
                 {/if}
             </p>
             <footer>
-                <button>Add a cup ☕</button>
-                <button class="secondary">Reset 🗑️</button>
+                <button onclick={onAddCup}>Add a cup ☕</button>
+                <button class="secondary" onclick={onReset}>Reset 🗑️</button>
                 <button class="secondary" onclick={onSwitchUser}>Switch user 👤</button>
             </footer>
         </article>

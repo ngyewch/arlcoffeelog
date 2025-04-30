@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@picocss/pico": "2.1.1",
+    "date-fns": "4.1.0",
     "ky": "1.8.1",
     "sweetalert2": "11.19.1",
     "svelte": "5.28.2"
