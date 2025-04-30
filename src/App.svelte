@@ -14,16 +14,27 @@
     let coffeeCount = $state<number>();
 
     onMount(() => {
+        const title = 'Retrieving user list...';
         Swal.fire({
-            title: 'Retrieving user list...',
+            title: title,
             didOpen: () => {
                 Swal.showLoading();
-                getUsers().then(userList => {
-                    userList
-                        .sort((a, b) => a.username.localeCompare(b.username, undefined, {sensitivity: 'accent'}));
-                    users = userList;
-                    Swal.close();
-                });
+                getUsers()
+                    .then(userList => {
+                        userList
+                            .sort((a, b) => a.username.localeCompare(b.username, undefined, {sensitivity: 'accent'}));
+                        users = userList;
+                        Swal.close();
+                    })
+                    .catch(e => {
+                        console.log(e);
+                        Swal.close();
+                        Swal.fire({
+                            title: title,
+                            icon: 'error',
+                            text: e,
+                        });
+                    });
             },
         });
     });
@@ -31,18 +42,28 @@
     function onUserChanged(e: Event & {
         currentTarget: EventTarget & HTMLSelectElement;
     }) {
+        const title = 'Retrieving user info...';
         if (selectedUser === undefined) {
             coffeeCount = undefined;
             return;
         }
         Swal.fire({
-            title: 'Retrieving user info...',
+            title: title,
             didOpen: () => {
                 Swal.showLoading();
                 getTotalCoffee(selectedUser ? selectedUser : '')
                     .then(count => {
                         coffeeCount = count;
                         Swal.close();
+                    })
+                    .catch(e => {
+                        console.log(e);
+                        Swal.close();
+                        Swal.fire({
+                            title: title,
+                            icon: 'error',
+                            text: e,
+                        });
                     });
             },
         });
