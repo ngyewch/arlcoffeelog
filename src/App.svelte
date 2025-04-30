@@ -2,9 +2,13 @@
     import Swal from 'sweetalert2';
     import {storage} from '@jill64/svelte-storage';
     import {string as serdeString} from '@jill64/svelte-storage/serde';
+    import {generate_code, type Amount} from 'sgqr';
+    import {fromByteArray} from 'base64-js';
     import {getUsers, getTotalCoffee, logCoffee, type User, resetUserData} from './lib/service.js';
 
     const unitPrice = 0.60;
+    const paymentPhoneNumber = '+6581982143';
+    const paymentName = 'Kee';
 
     const customStorage = storage({
         ['selectedUser']: serdeString,
@@ -14,6 +18,7 @@
     let coffeeCount = $state<number>();
     let users = $state<User[]>([]);
     let loadingUserInfo = $state<boolean>(false);
+    let qrCode = $state<string>();
 
     $effect(() => {
         coffeeCount = undefined;
@@ -55,6 +60,17 @@
             .then(count => {
                 coffeeCount = count;
                 loadingUserInfo = false;
+                generate_code({
+                    number: paymentPhoneNumber,
+                    amount: (coffeeCount * unitPrice).toFixed(2) as Amount,
+                    comments: `ARL Coffee (${coffeeCount} cups)`,
+                    type: 'image/png',
+                })
+                    .then(rsp => {
+                        if (rsp) {
+                            qrCode = `data:image/png;base64,${fromByteArray(rsp)}`;
+                        }
+                    });
             })
             .catch(e => showError(title, e));
     }
@@ -86,9 +102,8 @@
         const title = 'Reset';
         const amountOwed = (coffeeCount !== undefined) ? (coffeeCount * unitPrice).toFixed(2) : 'amount owed';
         Swal.fire({
-            icon: 'warning',
             title: title,
-            text: `Please confirm you have paid $${amountOwed} to Kee before resetting.`,
+            html: `<p>Please confirm you have paid $${amountOwed} to ${paymentName} before resetting.</p><p><img src="${qrCode}" alt="SGQR"></p>`,
             confirmButtonText: 'Confirm reset',
             showCancelButton: true,
         })
@@ -117,7 +132,7 @@
     function onShowPaymentInfo() {
         Swal.fire({
             title: 'Payment info',
-            text: 'PayLah!/PayNow to 81982143. Please inform Kee of your payment.',
+            text: `PayLah!/PayNow to ${paymentPhoneNumber}. Please inform ${paymentName} of your payment.`,
         });
     }
 

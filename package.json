@@ -27,8 +27,10 @@
   "dependencies": {
     "@jill64/svelte-storage": "2.0.1",
     "@picocss/pico": "2.1.1",
+    "base64-js": "1.5.1",
     "date-fns": "4.1.0",
     "ky": "1.8.1",
+    "sgqr": "0.8.2",
     "sweetalert2": "11.19.1",
     "svelte": "5.28.2"
   }
