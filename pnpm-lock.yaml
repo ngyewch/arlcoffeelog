@@ -38,10 +38,10 @@ importers:
         version: 7.0.2
       svelte-check:
         specifier: 4.1.6
-        version: 4.1.6(picomatch@4.0.2)(svelte@5.28.2)(typescript@5.7.3)
+        version: 4.1.6(picomatch@4.0.2)(svelte@5.28.2)(typescript@5.8.3)
       typescript:
-        specifier: 5.7.3
-        version: 5.7.3
+        specifier: 5.8.3
+        version: 5.8.3
       vite:
         specifier: 6.3.3
         version: 6.3.3
@@ -605,8 +605,8 @@ packages:
   ts-serde@1.0.9:
     resolution: {integrity: sha512-l+xiCagguJE7K1EUFJNif/3mT8aCxVnmkx6oubVq/ToAE95RH9VC/5yw8rHRQ6xJLlI6y3Fr/f/kdd6hwwVB/A==}
 
-  typescript@5.7.3:
-    resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -1090,7 +1090,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  svelte-check@4.1.6(picomatch@4.0.2)(svelte@5.28.2)(typescript@5.7.3):
+  svelte-check@4.1.6(picomatch@4.0.2)(svelte@5.28.2)(typescript@5.8.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 4.0.3
@@ -1098,7 +1098,7 @@ snapshots:
       picocolors: 1.1.1
       sade: 1.8.1
       svelte: 5.28.2
-      typescript: 5.7.3
+      typescript: 5.8.3
     transitivePeerDependencies:
       - picomatch
 
@@ -1132,7 +1132,7 @@ snapshots:
     dependencies:
       devalue: 5.1.1
 
-  typescript@5.7.3: {}
+  typescript@5.8.3: {}
 
   vite@6.3.3:
     dependencies:

@@ -18,7 +18,7 @@
     "@tsconfig/svelte": "5.0.4",
     "npm-run-all2": "7.0.2",
     "svelte-check": "4.1.6",
-    "typescript": "5.7.3",
+    "typescript": "5.8.3",
     "vite": "6.3.3"
   },
   "dependencies": {
