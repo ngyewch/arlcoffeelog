@@ -4,7 +4,7 @@
     import {string as serdeString} from '@jill64/svelte-storage/serde';
     import {generate_code, type Amount} from 'sgqr';
     import {fromByteArray} from 'base64-js';
-    import {getUsers, getTotalCoffee, logCoffee, type User, resetUserData} from './lib/service.js';
+    import {getUsers, getTotalCoffee, logCoffee, resetUserData, createUser, type User} from './lib/service.js';
 
     const unitPrice = 0.60;
     const paymentPhoneNumber = '+6581982143';
@@ -98,13 +98,13 @@
         });
     }
 
-    function onReset() {
-        const title = 'Reset';
+    function onPayAndReset() {
+        const title = 'Pay & reset';
         const amountOwed = (coffeeCount !== undefined) ? (coffeeCount * unitPrice).toFixed(2) : 'amount owed';
         Swal.fire({
             title: title,
-            html: `<p>Please confirm you have paid $${amountOwed} to ${paymentName} before resetting.</p><p><img src="${qrCode}" alt="SGQR"></p>`,
-            confirmButtonText: 'Confirm reset',
+            html: `<p>Please use the SGQR for payment. Please inform ${paymentName} when payment is completed.</p><p><img src="${qrCode}" alt="SGQR"></p>`,
+            confirmButtonText: 'Confirm payment and reset',
             showCancelButton: true,
         })
             .then(result => {
@@ -127,6 +127,33 @@
 
     function onSwitchUser() {
         selectedUser = '';
+    }
+
+    function onCreateNewUser() {
+        const title = 'Create new user';
+        Swal.fire({
+            title: title,
+            showCancelButton: true,
+            input: 'text',
+        })
+            .then(rsp => {
+                if (rsp.isDismissed || (rsp.value === undefined)) {
+                    return;
+                }
+                const username = rsp.value as string;
+                Swal.fire({
+                    title: title,
+                    didOpen: () => {
+                        Swal.showLoading();
+                        createUser(username)
+                            .then(() => {
+                                Swal.close();
+                                retrieveUserList();
+                            })
+                            .catch(e => showError(title, e));
+                    },
+                });
+            });
     }
 
     function onShowPaymentInfo() {
@@ -161,6 +188,7 @@
                     <option>{user.username}</option>
                 {/each}
             </select>
+            <button onclick={onCreateNewUser}>Create new user</button>
         {/if}
     {/if}
 
@@ -183,7 +211,7 @@
             </div>
             <footer>
                 <button onclick={onAddCup}>Add a cup ☕</button>
-                <button class="secondary" onclick={onReset} disabled={coffeeCount === undefined}>Reset 🗑️</button>
+                <button class="secondary" onclick={onPayAndReset} disabled={coffeeCount === undefined}>Pay & reset 💸️</button>
             </footer>
         </article>
 

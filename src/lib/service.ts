@@ -42,6 +42,14 @@ export async function resetUserData(username: string): Promise<string> {
         .then(rsp => rsp.text());
 }
 
+export async function createUser(username: string): Promise<string> {
+    return ky.post(makeUrl({
+        action: 'createUser',
+        username: username,
+    }))
+        .then(rsp => rsp.text());
+}
+
 function makeUrl(params: Record<string, string>): string {
     const urlSearchParams = new URLSearchParams(params);
     return `${baseUrl}?${urlSearchParams.toString()}`;
