@@ -1,9 +1,8 @@
 <script lang="ts">
     import Swal from 'sweetalert2';
-    import ky from 'ky';
     import {onMount} from 'svelte';
+    import {getUsers, getTotalCoffee} from './lib/service.js';
 
-    const baseUrl = 'https://script.google.com/macros/s/AKfycbym-ODmhPDbYIfd0oSaD2FYdtZCbpNyPWctBOQmu3C-_LbJQADixgXg-So8foXMXdSR/exec';
     const unitPrice = 0.60;
 
     interface User {
@@ -19,23 +18,15 @@
             title: 'Retrieving user list...',
             didOpen: () => {
                 Swal.showLoading();
-                ky.get(makeUrl({action: 'getUsers'}))
-                    .then(rsp => rsp.json())
-                    .then(rsp => {
-                        const userList = rsp as User[];
-                        userList
-                            .sort((a, b) => a.username.localeCompare(b.username, undefined, {sensitivity: 'accent'}));
-                        users = userList;
-                        Swal.close();
-                    });
+                getUsers().then(userList => {
+                    userList
+                        .sort((a, b) => a.username.localeCompare(b.username, undefined, {sensitivity: 'accent'}));
+                    users = userList;
+                    Swal.close();
+                });
             },
         });
     });
-
-    function makeUrl(params: Record<string, string>): string {
-        const urlSearchParams = new URLSearchParams(params);
-        return `${baseUrl}?${urlSearchParams.toString()}`;
-    }
 
     function onUserChanged(e: Event & {
         currentTarget: EventTarget & HTMLSelectElement;
@@ -48,10 +39,9 @@
             title: 'Retrieving user info...',
             didOpen: () => {
                 Swal.showLoading();
-                ky.get(makeUrl({action: 'getTotalCoffee', username: selectedUser ? selectedUser : ''}))
-                    .then(rsp => rsp.json())
-                    .then(rsp => {
-                        coffeeCount = rsp as number;
+                getTotalCoffee(selectedUser ? selectedUser : '')
+                    .then(count => {
+                        coffeeCount = count;
                         Swal.close();
                     });
             },
