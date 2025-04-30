@@ -12,9 +12,7 @@ export async function getUsers(): Promise<User[]> {
         action: 'getUsers',
     }))
         .then(rsp => rsp.json())
-        .then(rsp => {
-            return rsp as User[];
-        });
+        .then(rsp => rsp as User[]);
 }
 
 export async function getTotalCoffee(username: string): Promise<number> {
@@ -23,31 +21,25 @@ export async function getTotalCoffee(username: string): Promise<number> {
         username: username,
     }))
         .then(rsp => rsp.json())
-        .then(rsp => {
-            return rsp as number;
-        });
+        .then(rsp => rsp as number);
 }
 
-export async function logCoffee(username: string, date: Date, coffeeCount: number): Promise<void> {
+export async function logCoffee(username: string, date: Date, coffeeCount: number): Promise<string> {
     return ky.post(makeUrl({
         action: 'logCoffee',
         username: username,
-        date: format(date, 'yyyy-MM-dd HH:mm:ss'),
+        date: format(date, 'yyyy-MM-dd h:mm:ss aa'),
         coffeeCount: coffeeCount.toString(),
     }))
-        .then(rsp => {
-            // TODO
-        })
+        .then(rsp => rsp.text());
 }
 
-export async function resetUserData(username: string): Promise<void> {
+export async function resetUserData(username: string): Promise<string> {
     return ky.post(makeUrl({
         action: 'resetUserData',
         username: username,
     }))
-        .then(rsp => {
-            // TODO
-        })
+        .then(rsp => rsp.text());
 }
 
 function makeUrl(params: Record<string, string>): string {
