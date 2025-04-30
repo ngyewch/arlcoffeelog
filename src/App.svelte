@@ -7,9 +7,9 @@
     let selectedUser = $state<string>('');
     let coffeeCount = $state<number>();
     let users = $state<User[]>([]);
+    let loadingUserInfo = $state<boolean>(false);
 
     $effect(() => {
-        console.log('selectedUser', selectedUser);
         coffeeCount = undefined;
         if ((selectedUser === undefined) || (selectedUser === '')) {
             retrieveUserList();
@@ -50,26 +50,21 @@
             return;
         }
         const title = 'Retrieving user info...';
-        Swal.fire({
-            title: title,
-            didOpen: () => {
-                Swal.showLoading();
-                getTotalCoffee(selectedUser ? selectedUser : '')
-                    .then(count => {
-                        coffeeCount = count;
-                        Swal.close();
-                    })
-                    .catch(e => {
-                        console.log(e);
-                        Swal.close();
-                        Swal.fire({
-                            title: title,
-                            icon: 'error',
-                            text: e,
-                        });
-                    });
-            },
-        });
+        loadingUserInfo = true;
+        getTotalCoffee(selectedUser ? selectedUser : '')
+            .then(count => {
+                coffeeCount = count;
+                loadingUserInfo = false;
+            })
+            .catch(e => {
+                console.log(e);
+                loadingUserInfo = false;
+                Swal.fire({
+                    title: title,
+                    icon: 'error',
+                    text: e,
+                });
+            });
     }
 
     function onAddCup() {
@@ -105,7 +100,7 @@
         Swal.fire({
             icon: 'warning',
             title: title,
-            text: `Please confirm you have paid ${amountOwed} to Kee before resetting.`,
+            text: `Please confirm you have paid $${amountOwed} to Kee before resetting.`,
             confirmButtonText: 'Confirm reset',
             showCancelButton: true,
         })
@@ -140,15 +135,23 @@
 
     {#if (selectedUser !== '')}
         <article>
-            <header>👤 {selectedUser}</header>
-            <p>
-                {#if (coffeeCount !== undefined)}
-                    ☕ x {coffeeCount} @ ${unitPrice.toFixed(2)} = ${(coffeeCount * unitPrice).toFixed(2)}
+            <header>
+                <span>👤 {selectedUser}</span>
+            </header>
+            <p class="userInfo">
+                {#if loadingUserInfo}
+                    Loading...
+                    <progress></progress>
+                {/if}
+                {#if !loadingUserInfo}
+                    {#if (coffeeCount !== undefined)}
+                        ☕ x {coffeeCount} @ ${unitPrice.toFixed(2)} = ${(coffeeCount * unitPrice).toFixed(2)}
+                    {/if}
                 {/if}
             </p>
             <footer>
                 <button onclick={onAddCup}>Add a cup ☕</button>
-                <button class="secondary" onclick={onReset}>Reset 🗑️</button>
+                <button class="secondary" onclick={onReset} disabled={coffeeCount === undefined}>Reset 🗑️</button>
                 <button class="secondary" onclick={onSwitchUser}>Switch user 👤</button>
             </footer>
         </article>
@@ -158,5 +161,10 @@
 <style>
     .hero-icon {
         font-size: 10em;
+    }
+
+    .userInfo {
+        padding-top: 1em;
+        padding-bottom: 1em;
     }
 </style>
