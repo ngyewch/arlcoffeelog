@@ -40,15 +40,7 @@
                         users = userList;
                         Swal.close();
                     })
-                    .catch(e => {
-                        console.log(e);
-                        Swal.close();
-                        Swal.fire({
-                            title: title,
-                            icon: 'error',
-                            text: e,
-                        });
-                    });
+                    .catch(e => showError(title, e));
             },
         });
     }
@@ -64,15 +56,7 @@
                 coffeeCount = count;
                 loadingUserInfo = false;
             })
-            .catch(e => {
-                console.log(e);
-                loadingUserInfo = false;
-                Swal.fire({
-                    title: title,
-                    icon: 'error',
-                    text: e,
-                });
-            });
+            .catch(e => showError(title, e));
     }
 
     function onAddCup() {
@@ -87,17 +71,13 @@
                 logCoffee(selectedUser ? selectedUser : '', new Date(), 1)
                     .then(() => {
                         Swal.close();
-                        retrieveUserInfo();
-                    })
-                    .catch(e => {
-                        console.log(e);
-                        Swal.close();
                         Swal.fire({
                             title: title,
-                            icon: 'error',
-                            text: e,
+                            text: 'Productivity UP!',
                         });
-                    });
+                        retrieveUserInfo();
+                    })
+                    .catch(e => showError(title, e));
             },
         });
     }
@@ -123,15 +103,7 @@
                                     Swal.close();
                                     retrieveUserInfo();
                                 })
-                                .catch(e => {
-                                    console.log(e);
-                                    Swal.close();
-                                    Swal.fire({
-                                        title: title,
-                                        icon: 'error',
-                                        text: e,
-                                    });
-                                });
+                                .catch(e => showError(title, e));
                         },
                     });
                 }
@@ -146,6 +118,16 @@
         Swal.fire({
             title: 'Payment info',
             text: 'PayLah!/PayNow to 81982143. Please inform Kee of your payment.',
+        });
+    }
+
+    function showError(title: string, e: any) {
+        console.log(e);
+        Swal.close();
+        Swal.fire({
+            title: title,
+            icon: 'error',
+            text: e,
         });
     }
 </script>
