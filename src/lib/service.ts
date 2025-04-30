@@ -40,6 +40,16 @@ export async function logCoffee(username: string, date: Date, coffeeCount: numbe
         })
 }
 
+export async function resetUserData(username: string): Promise<void> {
+    return ky.post(makeUrl({
+        action: 'resetUserData',
+        username: username,
+    }))
+        .then(rsp => {
+            // TODO
+        })
+}
+
 function makeUrl(params: Record<string, string>): string {
     const urlSearchParams = new URLSearchParams(params);
     return `${baseUrl}?${urlSearchParams.toString()}`;

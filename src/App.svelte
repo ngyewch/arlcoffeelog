@@ -2,7 +2,7 @@
     import Swal from 'sweetalert2';
     import {storage} from '@jill64/svelte-storage';
     import {string as serdeString} from '@jill64/svelte-storage/serde';
-    import {getUsers, getTotalCoffee, logCoffee, type User} from './lib/service.js';
+    import {getUsers, getTotalCoffee, logCoffee, type User, resetUserData} from './lib/service.js';
 
     const unitPrice = 0.60;
 
@@ -114,7 +114,26 @@
         })
             .then(result => {
                 if (result.isConfirmed) {
-                    // TODO
+                    Swal.fire({
+                        title: title,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            resetUserData(selectedUser ? selectedUser : '')
+                                .then(() => {
+                                    Swal.close();
+                                    retrieveUserInfo();
+                                })
+                                .catch(e => {
+                                    console.log(e);
+                                    Swal.close();
+                                    Swal.fire({
+                                        title: title,
+                                        icon: 'error',
+                                        text: e,
+                                    });
+                                });
+                        },
+                    });
                 }
             });
     }
@@ -179,7 +198,7 @@
 
 <style>
     .hero-icon {
-        font-size: 10em;
+        font-size: 5em;
     }
 
     .userInfo {
