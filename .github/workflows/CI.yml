@@ -42,8 +42,17 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+      #- name: Deploy
+      #  uses: peaceiris/actions-gh-pages@v4
+      #  with:
+      #    github_token: ${{ secrets.GITHUB_TOKEN }}
+      #    publish_dir: ./dist
+
+      - name: Deploy to Netlify
+        uses: jsmrcaga/action-netlify-deploy@v2.0.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_DEPLOY_TO_PROD: false
+          build_directory: dist
+          install_command: "echo Skipping installing the dependencies"
+          build_command: "echo Skipping building the web files"
