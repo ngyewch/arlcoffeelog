@@ -49,10 +49,11 @@ jobs:
       #    publish_dir: ./dist
 
       - name: Deploy to Netlify
-        uses: jsmrcaga/action-netlify-deploy@v2.0.0
+        uses: nwtgck/actions-netlify@v3.0
         with:
+          publish-dir: ./dist
+          enable-github-deployment: false
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_DEPLOY_TO_PROD: false
-          build_directory: dist
-          install_command: "echo Skipping installing the dependencies"
-          build_command: "echo Skipping building the web files"
+          NETLIFY_SITE_ID: 154a9f66-7459-4468-bae8-1f43798c1334
+        timeout-minutes: 1
