@@ -11,6 +11,9 @@ importers:
       '@jill64/svelte-storage':
         specifier: 2.0.1
         version: 2.0.1(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)
+      '@octokit/rest':
+        specifier: 21.1.1
+        version: 21.1.1
       '@picocss/pico':
         specifier: 2.1.1
         version: 2.1.1
@@ -23,6 +26,9 @@ importers:
       ky:
         specifier: 1.8.1
         version: 1.8.1
+      netlify-auth-providers:
+        specifier: 1.0.0-alpha5
+        version: 1.0.0-alpha5
       sgqr:
         specifier: 0.8.2
         version: 0.8.2
@@ -39,6 +45,9 @@ importers:
       '@tsconfig/svelte':
         specifier: 5.0.4
         version: 5.0.4
+      '@types/netlify-auth-providers':
+        specifier: 1.0.2
+        version: 1.0.2
       gh-pages:
         specifier: 6.3.0
         version: 6.3.0
@@ -1187,6 +1196,9 @@ packages:
 
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
+
+  '@types/netlify-auth-providers@1.0.2':
+    resolution: {integrity: sha512-lexUXL0nSEtDyWXvGFUkUbH6YGfCsNGhW81ro4gvskBxqqxu1xLWnz3nqs5BAWGmwsC1niWMFYF6wvq1iz05XA==}
 
   '@types/node@22.15.3':
     resolution: {integrity: sha512-lX7HFZeHf4QG/J7tBZqrCAXwz9J5RD56Y6MpP0eJkka8p+K0RY/yBTW7CYFJ4VGCclxqOLKmiGP5juQc6MKgcw==}
@@ -3285,6 +3297,9 @@ packages:
 
   nested-error-stacks@2.1.1:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
+
+  netlify-auth-providers@1.0.0-alpha5:
+    resolution: {integrity: sha512-V4tqW60NEOYdd7QUWotB+XeMbw/kayi4Sbm67hSMWibXHG7xiRUp6+VEB8CmBt7/kb3HTw7+mQSwF7YR9hRaSQ==}
 
   netlify-cli@20.1.1:
     resolution: {integrity: sha512-TyOaHXN8CwesnTiavZQtXquzarJ8Bxu1ufa9SdEcJ/g7usy4/OIBrOVQiAk2RdOHn2gGV07ttJ1KxHt+RP9xew==}
@@ -5785,6 +5800,8 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
+  '@types/netlify-auth-providers@1.0.2': {}
+
   '@types/node@22.15.3':
     dependencies:
       undici-types: 6.21.0
@@ -8017,6 +8034,8 @@ snapshots:
   negotiator@0.6.3: {}
 
   nested-error-stacks@2.1.1: {}
+
+  netlify-auth-providers@1.0.0-alpha5: {}
 
   netlify-cli@20.1.1(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1):
     dependencies:

@@ -4,7 +4,18 @@
     import {string as serdeString} from '@jill64/svelte-storage/serde';
     import {generate_code, type Amount} from 'sgqr';
     import {fromByteArray} from 'base64-js';
+    import Authenticator from 'netlify-auth-providers';
+    import {Octokit} from '@octokit/rest';
     import {getUsers, getTotalCoffee, logCoffee, resetUserData, createUser, type User} from './lib/service.js';
+
+    const authenticator = new Authenticator({
+        site_id: '154a9f66-7459-4468-bae8-1f43798c1334',
+    });
+
+    interface AuthenticatorResponse {
+        provider: string;
+        token: string;
+    }
 
     const unitPrice = 0.60;
     const paymentPhoneNumber = '+6581982143';
@@ -14,6 +25,9 @@
         ['selectedUser']: serdeString,
     });
 
+    let authenticated = $state<boolean>(false);
+    let githubLogin = $state<string>();
+    let githubName = $state<string | null>();
     let selectedUser = $state<string>(customStorage['selectedUser']);
     let coffeeCount = $state<number>();
     let users = $state<User[]>([]);
@@ -163,6 +177,51 @@
         });
     }
 
+    function onLogin() {
+        authenticator.authenticate({
+            provider: 'github',
+            scope: 'read:org',
+        }, (err, data) => {
+            if (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Authentication failure',
+                });
+                return;
+            }
+            const response = data as AuthenticatorResponse;
+            const octokit = new Octokit({
+                auth: response.token,
+            });
+            octokit.rest.orgs.listMembershipsForAuthenticatedUser({
+                state: 'active',
+            })
+                .then(rsp => {
+                    let isMember = false;
+                    const entry = rsp.data.find(entry => {
+                        if (entry.organization.login === 'org-arl') {
+                            return true;
+                        }
+                    });
+                    if (entry === undefined) {
+                        showError('Unauthorized', 'Access denied');
+                        return;
+                    }
+                    octokit.rest.users.getAuthenticated()
+                        .then(rsp => {
+                            githubLogin = rsp.data.login;
+                            githubName = rsp.data.name;
+                        })
+                        .catch(e => {
+                            showError('Error retrieving user info', e);
+                        });
+                })
+                .catch(e => {
+                    showError('Error retrieving org memberships', e);
+                });
+        });
+    }
+
     function showError(title: string, e: any) {
         console.log(e);
         Swal.close();
@@ -178,47 +237,60 @@
     <span class="hero-icon">☕</span>
     <h1>ARL Productivity Logger</h1>
 
-    {#if (selectedUser === '')}
-        {#if users.length > 0}
-            <select bind:value={selectedUser}>
-                <option selected disabled value="">
-                    Select user...
-                </option>
-                {#each users as user}
-                    <option>{user.username}</option>
-                {/each}
-            </select>
-            <button onclick={onCreateNewUser}>Create new user</button>
+    {#if authenticated}
+        {#if (selectedUser === '')}
+            {#if users.length > 0}
+                <select bind:value={selectedUser}>
+                    <option selected disabled value="">
+                        Select user...
+                    </option>
+                    {#each users as user}
+                        <option>{user.username}</option>
+                    {/each}
+                </select>
+                <button onclick={onCreateNewUser}>Create new user</button>
+            {/if}
+        {/if}
+
+        {#if (selectedUser !== '')}
+            <article>
+                <header>
+                    <span>👤 {selectedUser}</span>
+                </header>
+                <div class="userInfo">
+                    {#if loadingUserInfo}
+                        Loading...
+                        <progress></progress>
+                    {/if}
+                    {#if !loadingUserInfo}
+                        {#if (coffeeCount !== undefined)}
+                            <p>☕ x {coffeeCount}</p>
+                            <p>Total: ${(coffeeCount * unitPrice).toFixed(2)}</p>
+                        {/if}
+                    {/if}
+                </div>
+                <footer>
+                    <button onclick={onAddCup}>Add a cup ☕</button>
+                    <button class="secondary"
+                            onclick={onPayAndReset}
+                            disabled={coffeeCount === undefined}>Pay & reset 💸️
+                    </button>
+                </footer>
+            </article>
+
+            <div>
+                <button class="outline"
+                        onclick={onSwitchUser}>Switch user 👤
+                </button>
+                <button class="outline"
+                        onclick={onShowPaymentInfo}>Payment info 💸
+                </button>
+            </div>
         {/if}
     {/if}
 
-    {#if (selectedUser !== '')}
-        <article>
-            <header>
-                <span>👤 {selectedUser}</span>
-            </header>
-            <div class="userInfo">
-                {#if loadingUserInfo}
-                    Loading...
-                    <progress></progress>
-                {/if}
-                {#if !loadingUserInfo}
-                    {#if (coffeeCount !== undefined)}
-                        <p>☕ x {coffeeCount}</p>
-                        <p>Total: ${(coffeeCount * unitPrice).toFixed(2)}</p>
-                    {/if}
-                {/if}
-            </div>
-            <footer>
-                <button onclick={onAddCup}>Add a cup ☕</button>
-                <button class="secondary" onclick={onPayAndReset} disabled={coffeeCount === undefined}>Pay & reset 💸️</button>
-            </footer>
-        </article>
-
-        <div>
-            <button class="outline" onclick={onSwitchUser}>Switch user 👤</button>
-            <button class="outline" onclick={onShowPaymentInfo}>Payment info 💸</button>
-        </div>
+    {#if !authenticated}
+        <button onclick={onLogin}>Login</button>
     {/if}
 </main>
 
