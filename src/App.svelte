@@ -6,6 +6,7 @@
     import {fromByteArray} from 'base64-js';
     import Authenticator from 'netlify-auth-providers';
     import {Octokit} from '@octokit/rest';
+    import {onMount} from 'svelte';
     import {getUsers, getTotalCoffee, logCoffee, resetUserData, createUser, type User} from './lib/service.js';
 
     const authenticator = new Authenticator({
@@ -22,6 +23,7 @@
     const paymentName = 'Kee';
 
     const customStorage = storage({
+        ['oauth2Token']: serdeString,
         ['selectedUser']: serdeString,
     });
 
@@ -33,6 +35,20 @@
     let users = $state<User[]>([]);
     let loadingUserInfo = $state<boolean>(false);
     let qrCode = $state<string>();
+
+    onMount(() => {
+        const oauth2Token = customStorage['oauth2Token'];
+        if (oauth2Token !== '') {
+            const octokit = new Octokit({
+                auth: oauth2Token,
+            });
+            octokit.rest.users.getAuthenticated()
+                .then(rsp => {
+                    githubLogin = rsp.data.login;
+                    githubName = rsp.data.name;
+                });
+        }
+    });
 
     $effect(() => {
         coffeeCount = undefined;
@@ -197,14 +213,13 @@
                 state: 'active',
             })
                 .then(rsp => {
-                    let isMember = false;
                     const entry = rsp.data.find(entry => {
                         if (entry.organization.login === 'org-arl') {
                             return true;
                         }
                     });
                     if (entry === undefined) {
-                        showError('Unauthorized', 'Access denied');
+                        showError('Unauthorized', 'Not a member of org-arl');
                         return;
                     }
                     octokit.rest.users.getAuthenticated()
@@ -291,6 +306,7 @@
 
     {#if !authenticated}
         <button onclick={onLogin}>Login</button>
+        {githubLogin} / {githubName}
     {/if}
 </main>
 
