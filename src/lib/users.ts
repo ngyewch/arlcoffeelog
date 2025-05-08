@@ -49,3 +49,7 @@ export const existingUsers: UserMapping[] = [
         githubLogin: "ymtoo",
     },
 ];
+
+export function findExistingUser(githubLogin: string): UserMapping | undefined {
+    return existingUsers.find((existingUser) => existingUser.githubLogin === githubLogin);
+}
