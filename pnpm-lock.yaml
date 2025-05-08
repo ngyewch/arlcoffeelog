@@ -52,8 +52,8 @@ importers:
         specifier: 6.3.0
         version: 6.3.0
       netlify-cli:
-        specifier: 21.1.0
-        version: 21.1.0(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)
+        specifier: 21.2.0
+        version: 21.2.0(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)
       npm-run-all2:
         specifier: 8.0.1
         version: 8.0.1
@@ -3301,8 +3301,8 @@ packages:
   netlify-auth-providers@1.0.0-alpha5:
     resolution: {integrity: sha512-V4tqW60NEOYdd7QUWotB+XeMbw/kayi4Sbm67hSMWibXHG7xiRUp6+VEB8CmBt7/kb3HTw7+mQSwF7YR9hRaSQ==}
 
-  netlify-cli@21.1.0:
-    resolution: {integrity: sha512-+yracuJld2PS0MwTlYscfQpn+z/hy9cE+eGZw62Vbw/DXm9NsS69bW7+KCPbvksSm+t53TKZyuq3OxHFvIHxPg==}
+  netlify-cli@21.2.0:
+    resolution: {integrity: sha512-PKOncgrqKvIVJcYyY0ZOFIkCe7vGcqgAw944f7oIOexL0foIyNeJPLQyOQpHdvlcDYOzp2hbR7+iAqKxGvqwhw==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
@@ -8037,7 +8037,7 @@ snapshots:
 
   netlify-auth-providers@1.0.0-alpha5: {}
 
-  netlify-cli@21.1.0(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1):
+  netlify-cli@21.2.0(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1):
     dependencies:
       '@fastify/static': 7.0.4
       '@netlify/blobs': 8.2.0

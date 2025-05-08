@@ -20,7 +20,7 @@
     "@tsconfig/svelte": "5.0.4",
     "@types/netlify-auth-providers": "1.0.2",
     "gh-pages": "6.3.0",
-    "netlify-cli": "21.1.0",
+    "netlify-cli": "21.2.0",
     "npm-run-all2": "8.0.1",
     "svelte-check": "4.1.7",
     "typescript": "5.8.3",
