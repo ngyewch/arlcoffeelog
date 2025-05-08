@@ -248,7 +248,7 @@
     }
 </script>
 
-<main>
+<main class="container centered">
     <span class="hero-icon">☕</span>
     <h1>ARL Productivity Logger</h1>
 
@@ -306,11 +306,14 @@
 
     {#if !authenticated}
         <button onclick={onLogin}>Login</button>
-        {githubLogin} / {githubName}
     {/if}
 </main>
 
 <style>
+    .centered {
+        text-align: center;
+    }
+
     .hero-icon {
         font-size: 5em;
     }
