@@ -7,11 +7,12 @@
     import Authenticator from 'netlify-auth-providers';
     import {Octokit} from '@octokit/rest';
     import {onMount} from 'svelte';
+    import {appConfig} from './lib/config.js';
     import {getTotalCoffee, logCoffee, resetUserData} from './lib/service.js';
     import {findExistingUser} from './lib/users.js';
 
     const authenticator = new Authenticator({
-        site_id: '154a9f66-7459-4468-bae8-1f43798c1334',
+        site_id: appConfig.netlifySiteId,
     });
 
     interface AuthenticatorResponse {
@@ -20,10 +21,6 @@
     }
 
     type AppState = 'initializing' | 'authenticating' | 'retrievingUserLoginInfo' | 'unauthorized' | 'authorized';
-
-    const unitPrice = 0.60;
-    const paymentPhoneNumber = '+6581982143';
-    const paymentName = 'Kee';
 
     const customStorage = storage({
         ['oauth2Token']: serdeString,
@@ -81,8 +78,8 @@
                 coffeeCount = count;
                 loadingUserInfo = false;
                 generate_code({
-                    number: paymentPhoneNumber,
-                    amount: (coffeeCount * unitPrice).toFixed(2) as Amount,
+                    number: appConfig.payeePhoneNumber,
+                    amount: (coffeeCount * appConfig.unitPrice).toFixed(2) as Amount,
                     comments: `ARL Coffee (${coffeeCount} cups)`,
                     type: 'image/png',
                 })
@@ -120,10 +117,9 @@
 
     function onPayAndReset() {
         const title = 'Pay & reset';
-        const amountOwed = (coffeeCount !== undefined) ? (coffeeCount * unitPrice).toFixed(2) : 'amount owed';
         Swal.fire({
             title: title,
-            html: `<p>Please use the SGQR for payment.</p><p>Please inform ${paymentName} when payment is completed and whether Paylah/PayNow is used.</p><p><img src="${qrCode}" alt="SGQR"></p>`,
+            html: `<p>Please use the SGQR for payment.</p><p>Please inform ${appConfig.payeeName} when payment is completed and whether Paylah/PayNow is used.</p><p><img src="${qrCode}" alt="SGQR"></p>`,
             confirmButtonText: 'Confirm payment and reset',
             showCancelButton: true,
         })
@@ -148,7 +144,7 @@
     function onShowPaymentInfo() {
         Swal.fire({
             title: 'Payment info',
-            text: `PayLah!/PayNow to ${paymentPhoneNumber}. Please inform ${paymentName} of your payment.`,
+            text: `PayLah!/PayNow to ${appConfig.payeePhoneNumber}. Please inform ${appConfig.payeeName} of your payment (and payment mode).`,
         });
     }
 
@@ -262,7 +258,7 @@
                 {#if !loadingUserInfo}
                     {#if (coffeeCount !== undefined)}
                         <p>☕ x {coffeeCount}</p>
-                        <p>Total: ${(coffeeCount * unitPrice).toFixed(2)}</p>
+                        <p>Total: ${(coffeeCount * appConfig.unitPrice).toFixed(2)}</p>
                     {/if}
                 {/if}
             </div>
