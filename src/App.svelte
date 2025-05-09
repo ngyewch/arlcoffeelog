@@ -202,8 +202,6 @@
                             } else {
                                 username = githubLogin;
                             }
-                            // TODO
-                            return;
                         }
                         appState = 'authorized';
                     })
