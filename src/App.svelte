@@ -273,7 +273,7 @@
                 <button onclick={onAddCup}>Add a cup ☕</button>
                 <button class="secondary"
                         onclick={onPayAndReset}
-                        disabled={coffeeCount === undefined}>Pay & reset 💸️
+                        disabled={(coffeeCount === undefined) || (coffeeCount === 0)}>Pay & reset 💸️
                 </button>
             </footer>
         </article>
