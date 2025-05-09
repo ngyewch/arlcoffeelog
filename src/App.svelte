@@ -80,7 +80,7 @@
                 generate_code({
                     number: appConfig.payeePhoneNumber,
                     amount: (coffeeCount * appConfig.unitPrice).toFixed(2) as Amount,
-                    comments: `ARL Coffee (${coffeeCount} cups)`,
+                    comments: `${appConfig.paymentComments} (${coffeeCount} cups)`,
                     type: 'image/png',
                 })
                     .then(rsp => {
@@ -176,12 +176,12 @@
         })
             .then(rsp => {
                 const entry = rsp.data.find(entry => {
-                    if (entry.organization.login === 'org-arl') {
+                    if (entry.organization.login === appConfig.allowedOrg) {
                         return true;
                     }
                 });
                 if (entry === undefined) {
-                    showError('Unauthorized', 'Not a member of org-arl');
+                    showError('Unauthorized', `You are not a member of ${appConfig.allowedOrg}`);
                     appState = 'unauthorized';
                     return;
                 }
@@ -223,7 +223,7 @@
 
 <main class="container">
     <span class="hero-icon">☕</span>
-    <h1>ARL Productivity Logger</h1>
+    <h1>{appConfig.title}</h1>
 
     {#if appState === 'initializing'}
         <span aria-busy="true">Checking auth...</span>
