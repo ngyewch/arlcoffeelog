@@ -29,6 +29,7 @@
     let appState = $state<AppState>('initializing');
     let githubLogin = $state<string>();
     let githubName = $state<string | null>();
+    let githubAvatarUrl = $state<string>();
     let username = $state<string>();
     let coffeeCount = $state<number>();
     let loadingUserInfo = $state<boolean>(false);
@@ -44,6 +45,7 @@
                 .then(rsp => {
                     githubLogin = rsp.data.login;
                     githubName = rsp.data.name;
+                    githubAvatarUrl = rsp.data.avatar_url;
                     appState = 'retrievingUserLoginInfo';
                 })
                 .catch(e => {
@@ -189,6 +191,7 @@
                     .then(rsp => {
                         githubLogin = rsp.data.login;
                         githubName = rsp.data.name;
+                        githubAvatarUrl = rsp.data.avatar_url;
                         const existingUser = findExistingUser(githubLogin);
                         if (existingUser !== undefined) {
                             username = existingUser.username;
@@ -244,14 +247,23 @@
     {#if appState === 'authorized'}
         <article>
             <header>
-                <span>👤 {username}</span>
-                <span class="pill">{githubLogin}</span>
-                {#if (githubName !== null) && (githubName !== undefined) && (githubName !== '')}
-                    <span class="pill">{githubName}</span>
-                {/if}
+                <div class="header-container">
+                    <div>
+                        <span>👤 {username}</span>
+                    </div>
+                    <div class="github-container">
+                        <img src={githubAvatarUrl} class="avatar" alt="avatar">
+                        <div>
+                            <div>{githubLogin}</div>
+                            {#if (githubName !== null) && (githubName !== undefined) && (githubName !== '')}
+                                <div>{githubName}</div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
             </header>
 
-            <div class="userInfo">
+            <div class="user-info">
                 {#if loadingUserInfo}
                     <span aria-busy="true">Retrieving user data...</span>
                 {/if}
@@ -263,7 +275,7 @@
                 {/if}
             </div>
 
-            <footer>
+            <footer class="custom-footer">
                 <button onclick={onAddCup}>Add a cup ☕</button>
                 <button class="secondary"
                         onclick={onPayAndReset}
@@ -285,16 +297,36 @@
         font-size: 5em;
     }
 
-    .userInfo {
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
+    .user-info {
+        padding-top: 1em;
+        padding-bottom: 1em;
     }
 
-    .pill {
-        font-size: smaller;
-        color: white;
-        background-color: blue;
-        border-radius: 8px;
-        padding: 4px 8px;
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2em;
+    }
+
+    .github-container {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .github-container div {
+        text-align: left;
+    }
+
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .custom-footer button {
+        margin-bottom: 4px;
     }
 </style>
