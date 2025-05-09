@@ -292,8 +292,8 @@
     }
 
     .userInfo {
-        padding-top: 2em;
-        padding-bottom: 2em;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
     }
 
     .pill {
