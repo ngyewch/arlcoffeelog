@@ -20,9 +20,9 @@
     "@tsconfig/svelte": "5.0.4",
     "@types/netlify-auth-providers": "1.0.2",
     "gh-pages": "6.3.0",
-    "netlify-cli": "21.2.1",
-    "npm-run-all2": "8.0.1",
-    "svelte-check": "4.1.7",
+    "netlify-cli": "21.5.0",
+    "npm-run-all2": "8.0.3",
+    "svelte-check": "4.2.1",
     "typescript": "5.8.3",
     "vite": "6.3.5"
   },
@@ -35,7 +35,7 @@
     "ky": "1.8.1",
     "netlify-auth-providers": "1.0.0-alpha5",
     "sgqr": "0.8.2",
-    "sweetalert2": "11.21.0",
-    "svelte": "5.28.2"
+    "sweetalert2": "11.21.2",
+    "svelte": "5.32.1"
   }
 }

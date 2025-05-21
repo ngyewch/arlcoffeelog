@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@jill64/svelte-storage':
         specifier: 2.0.1
-        version: 2.0.1(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)
+        version: 2.0.1(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)
       '@octokit/rest':
         specifier: 21.1.1
         version: 21.1.1
@@ -33,15 +33,15 @@ importers:
         specifier: 0.8.2
         version: 0.8.2
       svelte:
-        specifier: 5.28.2
-        version: 5.28.2
+        specifier: 5.32.1
+        version: 5.32.1
       sweetalert2:
-        specifier: 11.21.0
-        version: 11.21.0
+        specifier: 11.21.2
+        version: 11.21.2
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
         specifier: 5.0.3
-        version: 5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
+        version: 5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
       '@tsconfig/svelte':
         specifier: 5.0.4
         version: 5.0.4
@@ -52,14 +52,14 @@ importers:
         specifier: 6.3.0
         version: 6.3.0
       netlify-cli:
-        specifier: 21.2.1
-        version: 21.2.1(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)
+        specifier: 21.5.0
+        version: 21.5.0(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)
       npm-run-all2:
-        specifier: 8.0.1
-        version: 8.0.1
+        specifier: 8.0.3
+        version: 8.0.3
       svelte-check:
-        specifier: 4.1.7
-        version: 4.1.7(picomatch@4.0.2)(svelte@5.28.2)(typescript@5.8.3)
+        specifier: 4.2.1
+        version: 4.2.1(picomatch@4.0.2)(svelte@5.32.1)(typescript@5.8.3)
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -505,6 +505,10 @@ packages:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
 
+  '@netlify/api@13.4.0':
+    resolution: {integrity: sha512-Y/RDvIhMrxWoyhD3DV+um2sv1HFFxoG4LnaB8RqQu7Ei3zEiA7GwqLQm28YZfUR8uEerOPnWiuluKGmqKScX2Q==}
+    engines: {node: ^14.16.0 || >=16.0.0}
+
   '@netlify/binary-info@1.0.0':
     resolution: {integrity: sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw==}
 
@@ -517,8 +521,8 @@ packages:
     engines: {node: ^14.16.0 || >=16.0.0}
     hasBin: true
 
-  '@netlify/build@32.1.1':
-    resolution: {integrity: sha512-9ylhcy+FRzd+F2EXUDbBEydUHg52q84mqMEYtLUJBjHGtS/lZAuFSU2QzMMYl/sEWLe/LrmjLJg8Y4USPMmzbQ==}
+  '@netlify/build@32.1.4':
+    resolution: {integrity: sha512-iHBGNPsDU6Ec9VkMGb/HFroi/2AIP1oExt5wKJY0r6pqv1b0InGI51nnDfzVQJTtnmfhyL4pad3nGvMuHJlcIQ==}
     engines: {node: ^14.16.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -532,8 +536,8 @@ packages:
     resolution: {integrity: sha512-kKzGQ9gKNRUjqFMC1/1goeTe1WfzL6KhphwXac7tialowg10Dtmr2X+eDzfH9enGvD6vhYR4a0QMTQWkjfPVmg==}
     engines: {node: ^14.16.0 || >=16.0.0}
 
-  '@netlify/config@22.0.1':
-    resolution: {integrity: sha512-ukHIeUsHw13boIqalCrrOkJ2Q07RQ2KaiXNA6WQnqDOh8uJ4vQa/2tjwa/i3FWDbBuvSwUGBwjObS7PelVcf8w==}
+  '@netlify/config@22.2.0':
+    resolution: {integrity: sha512-33SwZJrLXqNCZJiKCyPXaxLVHGRcQhEV6+RwjKt6IVDvShZ2l1pLQnAS0Z/2xKsZUhQvKhrjXBAts/5eXt9WTA==}
     engines: {node: ^14.16.0 || >=16.0.0}
     hasBin: true
 
@@ -548,8 +552,8 @@ packages:
     resolution: {integrity: sha512-kPTF5yemdmadP/+qMDcc3p10NkZKXHXGm2BCFvB192paCNxQrSJz+qb56SO+kvSn9exg+HvhGJ0gfIcVwPjzWw==}
     engines: {node: ^14.14.0 || >=16.0.0}
 
-  '@netlify/functions-utils@5.3.17':
-    resolution: {integrity: sha512-3loIZ1SkAtqjmfA9BtbQlRoqKHdjjog/dy7vBORBAxedGAX/h4j5Q0hg200GHjosx/wSdFuWUZxvpfiAWe+xGg==}
+  '@netlify/functions-utils@5.3.18':
+    resolution: {integrity: sha512-llnoOrQF/iI5ZwDT27Izt+E6JGPDs57OF0EWQg+QRAMFtYyzevEsX7KbY8YTCYux0JB9UJ19OkOEOTN9fgm7OA==}
     engines: {node: ^14.16.0 || >=16.0.0}
 
   '@netlify/git-utils@5.2.0':
@@ -658,12 +662,12 @@ packages:
     resolution: {integrity: sha512-bsrv7Sjge5g71VMgZ65Ioc5q4lHXdLQCmpUU6sY06Aeol1psi1iDOGVMx/7ExJjbCtQgxye35wZjAz60i6X22Q==}
     engines: {node: ^14.16.0 || >=16.0.0}
 
-  '@netlify/serverless-functions-api@1.41.0':
-    resolution: {integrity: sha512-gez/2z8az4SFOitVID0j3GImXHs+1wsnthkpxMFoedeQ113uEE2wY0V492y7ABNfofR5VjMauWSdAK1S1JyNTQ==}
+  '@netlify/serverless-functions-api@1.41.2':
+    resolution: {integrity: sha512-pfCkH50JV06SGMNsNPjn8t17hOcId4fA881HeYQgMBOrewjsw4csaYgHEnCxCEu24Y5x75E2ULbFpqm9CvRCqw==}
     engines: {node: '>=18.0.0'}
 
-  '@netlify/zip-it-and-ship-it@10.1.0':
-    resolution: {integrity: sha512-TkE37wntJBgDM0d67vMLAM5hMpHIaWQ3VsgauINpaumlFECoTJVbBuxNYaUewKklZ9oiR/UtDivU+R8ZTtUs8g==}
+  '@netlify/zip-it-and-ship-it@10.1.1':
+    resolution: {integrity: sha512-MMXrty1NADxyMPgd7qZvDUYunhcPhxIA/jWP2joceOoPcAxOno/aS4jFuIHf2Dbb4HdhR+BlvgvDCy7QTXXyLQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
 
@@ -3154,17 +3158,13 @@ packages:
   netlify-auth-providers@1.0.0-alpha5:
     resolution: {integrity: sha512-V4tqW60NEOYdd7QUWotB+XeMbw/kayi4Sbm67hSMWibXHG7xiRUp6+VEB8CmBt7/kb3HTw7+mQSwF7YR9hRaSQ==}
 
-  netlify-cli@21.2.1:
-    resolution: {integrity: sha512-FoqUexXwgWTYVK6sSWf2ip5srOCNE+z5PU/J8kj7ZhI6hKjpKGQ2OU4MfIgkDZe/3dKZdjpX3UA+Q1Nc9xunPg==}
+  netlify-cli@21.5.0:
+    resolution: {integrity: sha512-tS3JbJ+pcv0/u3D+nqC+u+v/+aNXT5/dliaMZ7KTYkbMamKy1nTJfswGaRDE09bdDxcKxtYgdgMth0lnBlOJFQ==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
   netlify-redirector@0.5.0:
     resolution: {integrity: sha512-4zdzIP+6muqPCuE8avnrgDJ6KW/2+UpHTRcTbMXCIRxiRmyrX+IZ4WSJGZdHPWF3WmQpXpy603XxecZ9iygN7w==}
-
-  netlify@13.3.5:
-    resolution: {integrity: sha512-Nc3loyVASW59W+8fLDZT1lncpG7llffyZ2o0UQLx/Fr20i7P8oP+lE7+TEcFvXj9IUWU6LjB9P3BH+iFGyp+mg==}
-    engines: {node: ^14.16.0 || >=16.0.0}
 
   node-abi@3.75.0:
     resolution: {integrity: sha512-OhYaY5sDsIka7H7AtijtI9jwGYLyl29eQn/W623DiN/MIv5sUqc4g7BIDThX+gb7di9f6xK02nkp8sdfFWZLTg==}
@@ -3245,8 +3245,8 @@ packages:
     resolution: {integrity: sha512-TZKxPvItzai9kN9H/TkmCtx/ZN/hvr3vUycjlfmH0ootY9yFBzNOpiXAdIn1Iteqsvk4lQn6B5PTrt+n6h8k/w==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  npm-run-all2@8.0.1:
-    resolution: {integrity: sha512-jkhE0AsELQeCtScrcJ/7mSIdk+ZsnWjvKk3KwE96HZ6+OFVB74XhxQtHT1W6kdUfn92fRnBb29Mz82j9bV2XEQ==}
+  npm-run-all2@8.0.3:
+    resolution: {integrity: sha512-0mAycidMUMThrLt8AT3LGtOMgfLaMg6/4oUKHTKMU0jDSIsdKBsKp98H8zBFcJylQC4CtOB140UUFbOlFyE9gA==}
     engines: {node: ^20.5.0 || >=22.0.0, npm: '>= 10'}
     hasBin: true
 
@@ -4080,16 +4080,16 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-check@4.1.7:
-    resolution: {integrity: sha512-1jX4BzXrQJhC/Jt3SqYf6Ntu//vmfc6VWp07JkRfK2nn+22yIblspVUo96gzMkg0Zov8lQicxhxsMzOctwcMQQ==}
+  svelte-check@4.2.1:
+    resolution: {integrity: sha512-e49SU1RStvQhoipkQ/aonDhHnG3qxHSBtNfBRb9pxVXoa+N7qybAo32KgA9wEb2PCYFNaDg7bZCdhLD1vHpdYA==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
 
-  svelte@5.28.2:
-    resolution: {integrity: sha512-FbWBxgWOpQfhKvoGJv/TFwzqb4EhJbwCD17dB0tEpQiw1XyUEKZJtgm4nA4xq3LLsMo7hu5UY/BOFmroAxKTMg==}
+  svelte@5.32.1:
+    resolution: {integrity: sha512-tT02QOeF0dbSIQ+/rUZw+76DyO6ATHvZJGOM2A/Ed6fBwZwUxqIun3beErpePAtwFIK3Mi9k2QAnhFVvUBun8g==}
     engines: {node: '>=18'}
 
   svgo@3.3.2:
@@ -4097,8 +4097,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  sweetalert2@11.21.0:
-    resolution: {integrity: sha512-fiEK7SqRY/QD/wC2uqEHlfYGZ7qe2UcyQbJpbpj4YRVqplBgcI+euPZLZL+evLINcvbtXmL1SFUdZHKqBHGAAQ==}
+  sweetalert2@11.21.2:
+    resolution: {integrity: sha512-DNNFzx16LBQDZh7r5WOfeAfWZBdEdLHl3+tpO9Z1WWKMzdsgBgpLPBduJWVNMB283HYcm8ex99clLYXki21hdA==}
 
   system-architecture@0.1.0:
     resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
@@ -4888,11 +4888,11 @@ snapshots:
       '@types/yargs': 16.0.9
       chalk: 4.1.2
 
-  '@jill64/svelte-storage@2.0.1(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)':
+  '@jill64/svelte-storage@2.0.1(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)':
     dependencies:
       '@jill64/typed-storage': 4.0.1
-      '@sveltejs/kit': 2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
-      svelte: 5.28.2
+      '@sveltejs/kit': 2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
+      svelte: 5.32.1
 
   '@jill64/typed-storage@4.0.1':
     dependencies:
@@ -4937,6 +4937,15 @@ snapshots:
       - encoding
       - supports-color
 
+  '@netlify/api@13.4.0':
+    dependencies:
+      '@netlify/open-api': 2.37.0
+      lodash-es: 4.17.21
+      micro-api-client: 3.3.0
+      node-fetch: 3.3.2
+      p-wait-for: 5.0.2
+      qs: 6.14.0
+
   '@netlify/binary-info@1.0.0': {}
 
   '@netlify/blobs@8.2.0': {}
@@ -4953,20 +4962,20 @@ snapshots:
       yaml: 2.7.1
       yargs: 17.7.2
 
-  '@netlify/build@32.1.1(@opentelemetry/api@1.8.0)(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)':
+  '@netlify/build@32.1.4(@opentelemetry/api@1.8.0)(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)':
     dependencies:
       '@bugsnag/js': 7.25.0
       '@netlify/blobs': 8.2.0
       '@netlify/cache-utils': 5.2.0
-      '@netlify/config': 22.0.1
+      '@netlify/config': 22.2.0
       '@netlify/edge-bundler': 13.0.3
       '@netlify/framework-info': 9.9.3
-      '@netlify/functions-utils': 5.3.17(rollup@4.40.1)(supports-color@9.4.0)
+      '@netlify/functions-utils': 5.3.18(rollup@4.40.1)(supports-color@9.4.0)
       '@netlify/git-utils': 5.2.0
       '@netlify/opentelemetry-utils': 1.3.1(@opentelemetry/api@1.8.0)
       '@netlify/plugins-list': 6.80.0
       '@netlify/run-utils': 5.2.0
-      '@netlify/zip-it-and-ship-it': 10.1.0(rollup@4.40.1)(supports-color@9.4.0)
+      '@netlify/zip-it-and-ship-it': 10.1.1(rollup@4.40.1)(supports-color@9.4.0)
       '@opentelemetry/api': 1.8.0
       '@sindresorhus/slugify': 2.2.1
       ansi-escapes: 6.2.1
@@ -5033,9 +5042,10 @@ snapshots:
       path-exists: 5.0.0
       readdirp: 3.6.0
 
-  '@netlify/config@22.0.1':
+  '@netlify/config@22.2.0':
     dependencies:
       '@iarna/toml': 2.2.5
+      '@netlify/api': 13.4.0
       '@netlify/headers-parser': 8.0.0
       '@netlify/redirect-parser': 14.5.1
       chalk: 5.4.1
@@ -5051,7 +5061,6 @@ snapshots:
       is-plain-obj: 4.1.0
       js-yaml: 4.1.0
       map-obj: 5.0.2
-      netlify: 13.3.5
       node-fetch: 3.3.2
       omit.js: 2.0.2
       p-locate: 6.0.0
@@ -5099,9 +5108,9 @@ snapshots:
       read-pkg-up: 9.1.0
       semver: 7.7.1
 
-  '@netlify/functions-utils@5.3.17(rollup@4.40.1)(supports-color@9.4.0)':
+  '@netlify/functions-utils@5.3.18(rollup@4.40.1)(supports-color@9.4.0)':
     dependencies:
-      '@netlify/zip-it-and-ship-it': 10.1.0(rollup@4.40.1)(supports-color@9.4.0)
+      '@netlify/zip-it-and-ship-it': 10.1.1(rollup@4.40.1)(supports-color@9.4.0)
       cpy: 9.0.1
       path-exists: 5.0.0
     transitivePeerDependencies:
@@ -5197,14 +5206,14 @@ snapshots:
     dependencies:
       execa: 6.1.0
 
-  '@netlify/serverless-functions-api@1.41.0': {}
+  '@netlify/serverless-functions-api@1.41.2': {}
 
-  '@netlify/zip-it-and-ship-it@10.1.0(rollup@4.40.1)(supports-color@9.4.0)':
+  '@netlify/zip-it-and-ship-it@10.1.1(rollup@4.40.1)(supports-color@9.4.0)':
     dependencies:
       '@babel/parser': 7.27.1
       '@babel/types': 7.27.1
       '@netlify/binary-info': 1.0.0
-      '@netlify/serverless-functions-api': 1.41.0
+      '@netlify/serverless-functions-api': 1.41.2
       '@vercel/nft': 0.27.7(rollup@4.40.1)(supports-color@9.4.0)
       archiver: 5.3.2
       common-path-prefix: 3.0.0
@@ -5498,9 +5507,9 @@ snapshots:
     dependencies:
       acorn: 8.14.1
 
-  '@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))':
+  '@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
+      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 5.1.1
@@ -5512,26 +5521,26 @@ snapshots:
       sade: 1.8.1
       set-cookie-parser: 2.7.1
       sirv: 3.0.1
-      svelte: 5.28.2
+      svelte: 5.32.1
       vite: 6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))':
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
+      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
       debug: 4.4.0(supports-color@9.4.0)
-      svelte: 5.28.2
+      svelte: 5.32.1
       vite: 6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))':
+  '@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)))(svelte@5.32.1)(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
       debug: 4.4.0(supports-color@9.4.0)
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.17
-      svelte: 5.28.2
+      svelte: 5.32.1
       vite: 6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1)
       vitefu: 1.0.6(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(yaml@2.7.1))
     transitivePeerDependencies:
@@ -7790,19 +7799,20 @@ snapshots:
 
   netlify-auth-providers@1.0.0-alpha5: {}
 
-  netlify-cli@21.2.1(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1):
+  netlify-cli@21.5.0(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1):
     dependencies:
       '@fastify/static': 7.0.4
+      '@netlify/api': 13.4.0
       '@netlify/blobs': 8.2.0
-      '@netlify/build': 32.1.1(@opentelemetry/api@1.8.0)(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)
+      '@netlify/build': 32.1.4(@opentelemetry/api@1.8.0)(@types/node@22.15.3)(picomatch@4.0.2)(rollup@4.40.1)
       '@netlify/build-info': 9.0.4
-      '@netlify/config': 22.0.1
+      '@netlify/config': 22.2.0
       '@netlify/edge-bundler': 13.0.3
       '@netlify/edge-functions': 2.12.0
       '@netlify/headers-parser': 8.0.0
       '@netlify/local-functions-proxy': 2.0.3
       '@netlify/redirect-parser': 14.5.1
-      '@netlify/zip-it-and-ship-it': 10.1.0(rollup@4.40.1)(supports-color@9.4.0)
+      '@netlify/zip-it-and-ship-it': 10.1.1(rollup@4.40.1)(supports-color@9.4.0)
       '@octokit/rest': 21.1.1
       '@opentelemetry/api': 1.8.0
       '@pnpm/tabtab': 0.5.4
@@ -7860,7 +7870,6 @@ snapshots:
       maxstache-stream: 1.0.4
       multiparty: 4.2.3
       nanospinner: 1.2.2
-      netlify: 13.3.5
       netlify-redirector: 0.5.0
       node-fetch: 3.3.2
       normalize-package-data: 6.0.2
@@ -7918,15 +7927,6 @@ snapshots:
       - utf-8-validate
 
   netlify-redirector@0.5.0: {}
-
-  netlify@13.3.5:
-    dependencies:
-      '@netlify/open-api': 2.37.0
-      lodash-es: 4.17.21
-      micro-api-client: 3.3.0
-      node-fetch: 3.3.2
-      p-wait-for: 5.0.2
-      qs: 6.14.0
 
   node-abi@3.75.0:
     dependencies:
@@ -7989,7 +7989,7 @@ snapshots:
 
   npm-normalize-package-bin@4.0.0: {}
 
-  npm-run-all2@8.0.1:
+  npm-run-all2@8.0.3:
     dependencies:
       ansi-styles: 6.2.1
       cross-spawn: 7.0.6
@@ -8877,19 +8877,19 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.1.7(picomatch@4.0.2)(svelte@5.28.2)(typescript@5.8.3):
+  svelte-check@4.2.1(picomatch@4.0.2)(svelte@5.32.1)(typescript@5.8.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 4.0.3
       fdir: 6.4.4(picomatch@4.0.2)
       picocolors: 1.1.1
       sade: 1.8.1
-      svelte: 5.28.2
+      svelte: 5.32.1
       typescript: 5.8.3
     transitivePeerDependencies:
       - picomatch
 
-  svelte@5.28.2:
+  svelte@5.32.1:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -8916,7 +8916,7 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
 
-  sweetalert2@11.21.0: {}
+  sweetalert2@11.21.2: {}
 
   system-architecture@0.1.0: {}
 
