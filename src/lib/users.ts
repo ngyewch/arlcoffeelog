@@ -5,7 +5,7 @@ export interface UserMapping {
 
 export const existingUsers: UserMapping[] = [
     {
-        username: "bharath", // Bharath
+        username: "bharath",
         githubLogin: "bharathkalyan",
     },
     {
@@ -13,7 +13,7 @@ export const existingUsers: UserMapping[] = [
         githubLogin: "harivnkochi",
     },
     {
-        username: "kee", // Kee Boon Leng
+        username: "kee",
         githubLogin: "AlexK2008",
     },
     {
