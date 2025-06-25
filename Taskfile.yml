@@ -21,3 +21,9 @@ tasks:
     deps: [ install ]
     cmds:
       - pnpm run dev
+
+  deploy:
+    desc: Deploy to Netlify
+    deps: [ build ]
+    cmds:
+      - netlify deploy --no-build --dir dist
