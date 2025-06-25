@@ -16,26 +16,26 @@
     "doDeploy": "gh-pages -d dist --nojekyll"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "5.0.3",
+    "@sveltejs/vite-plugin-svelte": "5.1.0",
     "@tsconfig/svelte": "5.0.4",
     "@types/netlify-auth-providers": "1.0.2",
     "gh-pages": "6.3.0",
-    "netlify-cli": "21.5.0",
-    "npm-run-all2": "8.0.3",
-    "svelte-check": "4.2.1",
+    "netlify-cli": "22.1.6",
+    "npm-run-all2": "8.0.4",
+    "svelte-check": "4.2.2",
     "typescript": "5.8.3",
-    "vite": "6.3.5"
+    "vite": "7.0.0"
   },
   "dependencies": {
     "@jill64/svelte-storage": "2.0.1",
-    "@octokit/rest": "21.1.1",
+    "@octokit/rest": "22.0.0",
     "@picocss/pico": "2.1.1",
     "base64-js": "1.5.1",
     "date-fns": "4.1.0",
     "ky": "1.8.1",
     "netlify-auth-providers": "1.0.0-alpha5",
     "sgqr": "0.8.2",
-    "sweetalert2": "11.21.2",
-    "svelte": "5.32.1"
+    "sweetalert2": "11.22.1",
+    "svelte": "5.34.7"
   }
 }
