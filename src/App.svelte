@@ -177,18 +177,30 @@
             state: 'active',
         })
             .then(rsp => {
-                const entry = rsp.data.find(entry => {
+                const membership = rsp.data.find(entry => {
                     if (entry.organization.login === appConfig.allowedOrg) {
                         return true;
                     }
                 });
-                if (entry === undefined) {
-                    showError('Unauthorized', `You are not a member of ${appConfig.allowedOrg}`);
-                    appState = 'unauthorized';
-                    return;
-                }
                 octokit.rest.users.getAuthenticated()
                     .then(rsp => {
+                        if (membership === undefined) {
+                            console.log(`${rsp.data.login} is not a member of ${appConfig.allowedOrg}`);
+                            let isGuest = false;
+                            for (const guestUserId of appConfig.guestUserIds) {
+                                if (rsp.data.login === guestUserId) {
+                                    isGuest = true;
+                                    break;
+                                }
+                            }
+                            if (!isGuest) {
+                                console.log(`${rsp.data.login} is not a guest user`);
+                                showError('Unauthorized', `You are not a member or guest of ${appConfig.allowedOrg}`);
+                                appState = 'unauthorized';
+                                return;
+                            }
+                        }
+
                         githubLogin = rsp.data.login;
                         githubName = rsp.data.name;
                         githubAvatarUrl = rsp.data.avatar_url;

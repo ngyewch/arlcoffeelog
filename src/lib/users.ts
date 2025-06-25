@@ -3,6 +3,10 @@ export interface UserMapping {
     githubLogin: string;
 }
 
+export const guestUserIds: string[] = [
+    "wy-95",
+];
+
 export const existingUsers: UserMapping[] = [
     {
         username: "bharath",
