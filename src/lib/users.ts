@@ -5,6 +5,7 @@ export interface UserMapping {
 
 export const guestUserIds: string[] = [
     "wy-95",
+    "mono312",
 ];
 
 export const existingUsers: UserMapping[] = [
