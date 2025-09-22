@@ -188,7 +188,7 @@
                             console.log(`${rsp.data.login} is not a member of ${appConfig.allowedOrg}`);
                             let isGuest = false;
                             for (const guestUserId of appConfig.guestUserIds) {
-                                if (rsp.data.login === guestUserId) {
+                                if (rsp.data.login.toLowerCase() === guestUserId.toLowerCase()) {
                                     isGuest = true;
                                     break;
                                 }
