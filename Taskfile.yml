@@ -4,6 +4,7 @@ tasks:
   install:
     cmds:
       - pnpm install
+      - pnpm prune
 
   clean:
     desc: Clean
@@ -15,6 +16,13 @@ tasks:
     deps: [ install ]
     cmds:
       - pnpm run build
+
+  outdated:
+    desc: Outdated
+    aliases: [ dependencyUpdates ]
+    deps: [ install ]
+    cmds:
+      - pnpm outdated
 
   dev:
     desc: Dev
