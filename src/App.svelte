@@ -26,6 +26,8 @@
         ['oauth2Token']: serdeString,
     });
 
+    const maxCoffeeToAdd = 10;
+
     let appState = $state<AppState>('initializing');
     let githubLogin = $state<string>();
     let githubName = $state<string | null>();
@@ -34,6 +36,7 @@
     let coffeeCount = $state<number>();
     let loadingUserInfo = $state<boolean>(false);
     let qrCode = $state<string>();
+    let coffeeToAdd = $state<number>(1);
 
     onMount(() => {
         const oauth2Token = customStorage['oauth2Token'];
@@ -69,6 +72,17 @@
         }
     });
 
+    $effect(() => {
+        let newCoffeeToAdd = coffeeToAdd;
+        if (newCoffeeToAdd > maxCoffeeToAdd) {
+            newCoffeeToAdd = maxCoffeeToAdd;
+        }
+        newCoffeeToAdd = Math.trunc(newCoffeeToAdd);
+        if (newCoffeeToAdd !== coffeeToAdd) {
+            coffeeToAdd = newCoffeeToAdd;
+        }
+    });
+
     function retrieveUserInfo() {
         if (username === undefined) {
             return;
@@ -98,7 +112,11 @@
         if ((username === undefined) || (username === '')) {
             return;
         }
-        const title = 'Add a cup';
+        if (coffeeToAdd > maxCoffeeToAdd) {
+            coffeeToAdd = maxCoffeeToAdd;
+        }
+        coffeeToAdd = Math.trunc(coffeeToAdd);
+        const title = `Add ${coffeeToAdd} cup${coffeeToAdd > 1 ? 's' : ''}`;
         Swal.fire({
             title: title,
             didOpen: () => {
@@ -112,7 +130,10 @@
                         });
                         retrieveUserInfo();
                     })
-                    .catch(e => showError(title, e));
+                    .catch(e => showError(title, e))
+                    .finally(() => {
+                        coffeeToAdd = 1;
+                    });
             },
         });
     }
@@ -288,11 +309,21 @@
             </div>
 
             <footer class="custom-footer">
-                <button onclick={onAddCup}>Add a cup ☕</button>
-                <button class="secondary"
-                        onclick={onPayAndReset}
-                        disabled={(coffeeCount === undefined) || (coffeeCount === 0)}>Pay & reset 💸️
-                </button>
+                <div>
+                    <button onclick={onAddCup}>Add {coffeeToAdd} cup{#if coffeeToAdd > 1}s{/if} ☕</button>
+                    <button class="secondary"
+                            onclick={onPayAndReset}
+                            disabled={(coffeeCount === undefined) || (coffeeCount === 0)}>Pay & reset 💸️
+                    </button>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; justify-content: center; font-size: smaller;">
+                    <div>
+                        <label for="cupsToAdd">Cups to add</label>
+                    </div>
+                    <div style="width: 6em;">
+                        <input id="cupsToAdd" type="number" min="1" step="1" placeholder="Cups to add" bind:value={coffeeToAdd}>
+                    </div>
+                </div>
             </footer>
         </article>
 
