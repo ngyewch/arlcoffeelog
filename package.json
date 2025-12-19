@@ -17,14 +17,14 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "6.2.1",
-    "@tsconfig/svelte": "5.0.5",
+    "@tsconfig/svelte": "5.0.6",
     "@types/netlify-auth-providers": "1.0.2",
     "gh-pages": "6.3.0",
-    "netlify-cli": "23.10.0",
+    "netlify-cli": "23.13.0",
     "npm-run-all2": "8.0.4",
-    "svelte-check": "4.3.3",
+    "svelte-check": "4.3.4",
     "typescript": "5.9.3",
-    "vite": "7.2.2"
+    "vite": "7.3.0"
   },
   "dependencies": {
     "@jill64/svelte-storage": "2.0.1",
@@ -32,10 +32,10 @@
     "@picocss/pico": "2.1.1",
     "base64-js": "1.5.1",
     "date-fns": "4.1.0",
-    "ky": "1.14.0",
+    "ky": "1.14.1",
     "netlify-auth-providers": "1.0.0-alpha5",
     "sgqr": "0.8.2",
-    "sweetalert2": "11.26.3",
-    "svelte": "5.43.5"
+    "sweetalert2": "11.26.10",
+    "svelte": "5.46.0"
   }
 }
